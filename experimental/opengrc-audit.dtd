@@ -1,5 +1,6 @@
 <!ELEMENT audit (options|criteria)*>
-	<!ATTLIST audit version CDATA #IMPLIED>
+	<!ATTLIST audit version CDATA #IMPLIED
+		name CDATA #IMPLIED>
 	<!ATTLIST audit xml:lang CDATA #IMPLIED>
 	<!ELEMENT options (severities|priorities)+>
 		<!ELEMENT severities (severity)+>
