@@ -1,22 +1,25 @@
-<!ELEMENT audit (options|criteria)*>
-<!ATTLIST audit version CDATA #IMPLIED>
-<!ATTLIST audit xml:lang CDATA #IMPLIED>
-<!ELEMENT options (severity|priority)+>
-<!ELEMENT severity (CDATA)>
-<!ATTLIST severity sort CDATA #IMPLIED
-				   name ID #REQUIRED>
-<!ELEMENT priority (CDATA)>
-<!ATTLIST priority sort CDATA #IMPLIED
-				   name ID #REQUIRED>
-<!ELEMENT criteria (name,version?,author,license?,settings?,criterion+)>
-<!ELEMENT name (CDATA)>
-<!ELEMENT version (CDATA)>
-<!ELEMENT author (CDATA)>
-<!ATTLIST author name CDATA #REQUIRED
-				 url CDATA #IMPLIED>
-<!ELEMENT license (#PCDATA)>
-<!ELEMENT settings (expiry?)>
-<!ELEMENT expiry EMPTY>
-<!ATTLIST expiry date CDATA #IMPLIED>
-<!ELEMENT criterion (CDATA)>
-<!ATTLIST criterion sort CDATA #IMPLIED>
+<!DOCTYPE audit PUBLIC "-//OPENGRC//DTD AUDIT EXPERIMENTAL//EN" 
+	"https://dtd.opengrc.org/experimental/opengrc-audit.dtd" [
+	<!ELEMENT audit (options|criteria)*>
+		<!ATTLIST audit version CDATA #IMPLIED>
+		<!ATTLIST audit xml:lang CDATA #IMPLIED>
+		<!ELEMENT options (severity|priority)+>
+			<!ELEMENT severity (CDATA)>
+				<!ATTLIST severity sort CDATA #IMPLIED
+					name ID #REQUIRED>
+			<!ELEMENT priority (CDATA)>
+				<!ATTLIST priority sort CDATA #IMPLIED
+					name ID #REQUIRED>
+	<!ELEMENT criteria (name,version?,author,license?,settings?,criterion+)>
+		<!ELEMENT name (CDATA)>
+		<!ELEMENT version (CDATA)>
+		<!ELEMENT author (CDATA)>
+		<!ATTLIST author name CDATA #REQUIRED
+			url CDATA #IMPLIED>
+		<!ELEMENT license (#PCDATA)>
+		<!ELEMENT settings (expiry?)>
+			<!ELEMENT expiry EMPTY>
+				<!ATTLIST expiry date CDATA #IMPLIED>
+		<!ELEMENT criterion (CDATA)>
+			<!ATTLIST criterion sort CDATA #IMPLIED>
+]>
