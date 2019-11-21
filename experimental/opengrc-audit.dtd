@@ -1,16 +1,18 @@
 <!ELEMENT audit (options|criteria)*>
 	<!ATTLIST audit version CDATA #IMPLIED>
 	<!ATTLIST audit xml:lang CDATA #IMPLIED>
-	<!ELEMENT options (severity|priority)+>
-		<!ELEMENT severity (CDATA)>
-			<!ATTLIST severity sort CDATA #IMPLIED
-				name ID #REQUIRED>
-		<!ELEMENT priority (CDATA)>
-			<!ATTLIST priority sort CDATA #IMPLIED
-				name ID #REQUIRED>
-<!ELEMENT criteria (name,version?,author,license?,settings?,criterion+)>
-	<!ELEMENT name (CDATA)>
-	<!ELEMENT version (CDATA)>
+	<!ELEMENT options (severities|priorities)+>
+		<!ELEMENT severities (severity)+>
+			<!ELEMENT severity (CDATA)>
+				<!ATTLIST severity sort CDATA #IMPLIED
+					name ID #REQUIRED>
+		<!ELEMENT priorities (priority)+>
+			<!ELEMENT priority (CDATA)>
+				<!ATTLIST priority sort CDATA #IMPLIED
+					name ID #REQUIRED>
+<!ELEMENT criteria (name,version?,author+,license?,settings?,criterion+)>
+	<!ATTLIST criteria name ID #REQUIRED
+		version CDATA #IMPLIED>
 	<!ELEMENT author (CDATA)>
 	<!ATTLIST author name CDATA #REQUIRED
 		url CDATA #IMPLIED>
@@ -19,4 +21,5 @@
 		<!ELEMENT expiry EMPTY>
 			<!ATTLIST expiry date CDATA #IMPLIED>
 	<!ELEMENT criterion (CDATA)>
-		<!ATTLIST criterion sort CDATA #IMPLIED>
+		<!ATTLIST criterion sort CDATA #IMPLIED
+			name ID #REQUIRED>
