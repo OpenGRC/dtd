@@ -1,0 +1,192 @@
+<!ENTITY % URI "CDATA">
+    <!-- a Uniform Resource Identifier -->
+
+<!ENTITY % Datetime "CDATA">
+	<!-- date and time information. ISO date format -->
+
+<!ENTITY % LanguageCode "CDATA">
+    <!-- a language code, as per [RFC1766] -->
+
+<!ELEMENT compliance (compliance-options,author+,license,(book*|(part|chapter|article|section|appendix|requirement)*))>
+	<!ATTLIST compliance
+		name CDATA #REQUIRED
+		title CDATA #IMPLIED
+		edition CDATA #REQUIRED
+		uri %URI; #IMPLIED
+		version CDATA #FIXED "0.1"
+		xml:lang %LanguageCode; #IMPLIED>			
+	<!ELEMENT compliance-options (compliance-properties?,relevance?,lifecycle?,maturity?)>
+		<!ELEMENT compliance-properties (compliance-property+)>
+			<!ATTLIST compliance-properties
+				name ID #REQUIRED
+				title CDATA #IMPLIED
+				label CDATA #IMPLIED
+				sort CDATA #IMPLIED
+				uri %URI; #IMPLIED>
+			<!ELEMENT compliance-property (CDATA*)>
+				<!ATTLIST compliance-property
+					name ID #REQUIRED
+					title CDATA #IMPLIED
+					label CDATA #IMPLIED
+					sort CDATA #IMPLIED
+					visible (TRUE|FALSE) "TRUE"
+					uri %URI; #IMPLIED>
+		<!ELEMENT relevance (reason+)>
+			<!ELEMENT reason (#PCDATA)>
+				<!ATTLIST reason
+					name ID #REQUIRED
+					type (assessment|situation|contract|regulation) #REQUIRED
+					title CDATA #IMPLIED
+					label CDATA #IMPLIED
+					sort CDATA #IMPLIED
+					visible (TRUE|FALSE) "TRUE"
+					uri %URI; #IMPLIED>
+		<!ELEMENT lifecycle (stage+)>
+			<!ELEMENT stage (#PCDATA)>
+				<!ATTLIST stage
+					name ID #REQUIRED
+					type (unknown|deviant|pending|conform|retired) #REQUIRED
+					title CDATA #IMPLIED
+					label CDATA #IMPLIED
+					sort CDATA #IMPLIED
+					visible (TRUE|FALSE) "TRUE"
+					uri %URI; #IMPLIED>
+		<!ELEMENT maturity (level+)>
+			<!ELEMENT level (#PCDATA)>
+				<!ATTLIST level
+					name ID #REQUIRED
+					type (negligent|initial|repeatable|defined|capable|efficient) #REQUIRED
+					title CDATA #IMPLIED
+					label CDATA #IMPLIED
+					sort CDATA #IMPLIED
+					visible (TRUE|FALSE) "TRUE"
+					uri %URI; #IMPLIED>
+	<!ELEMENT author (EMPTY)>
+		<!ATTLIST author 
+			name CDATA #REQUIRED
+			href %URI; #IMPLIED
+			rel CDATA #FIXED "dct:publisher" 
+			rel CDATA #FIXED "cc:attributionURL" 
+			property CDATA #FIXED "cc:attributionName">
+	<!ELEMENT license (#PCDATA)>
+		<!ATTLIST license 
+			name CDATA #REQUIRED
+			href %URI; #IMPLIED 
+			xmlns:cc CDATA #FIXED "http://creativecommons.org/ns#"
+			xmlns:dct CDATA #FIXED "http://purl.org/dc/terms/"
+			rel CDATA #FIXED "cc:license"
+			rel CDATA #FIXED "license">
+	<!ELEMENT book ((part|chapter|article|section|appendix)*, (preface|glossary|bibliography)?)>
+		<!ATTLIST book
+			name CDATA #REQUIRED
+			title CDATA #IMPLIED
+			sort CDATA #IMPLIED
+			visible (TRUE|FALSE) "TRUE"
+			uri %URI; #IMPLIED>
+	<!ELEMENT part (chapter|article|section|appendix)*>
+		<!ATTLIST part
+			name CDATA #REQUIRED
+			title CDATA #IMPLIED
+			sort CDATA #IMPLIED
+			visible (TRUE|FALSE) "TRUE"
+			uri %URI; #IMPLIED>					
+	<!ELEMENT chapter (#PCDATA|article|section|appendix|requirement)*>
+		<!ATTLIST chapter
+			name CDATA #REQUIRED
+			title CDATA #IMPLIED
+			sort CDATA #IMPLIED
+			visible (TRUE|FALSE) "TRUE"
+			uri %URI; #IMPLIED>
+	<!ELEMENT article (#PCDATA|section|appendix|requirement)*>
+		<!ATTLIST article
+			name CDATA #REQUIRED
+			title CDATA #IMPLIED
+			sort CDATA #IMPLIED
+			visible (TRUE|FALSE) "TRUE"
+			uri %URI; #IMPLIED>
+	<!ELEMENT section (#PCDATA|section|requirement)*>
+		<!ATTLIST section
+			name CDATA #REQUIRED
+			title CDATA #IMPLIED
+			sort CDATA #IMPLIED
+			visible (TRUE|FALSE) "TRUE"
+			uri %URI; #IMPLIED>
+	<!ELEMENT appendix (#PCDATA|chapter|article|section|appendix)*>
+		<!ATTLIST appendix
+			name CDATA #REQUIRED
+			title CDATA #IMPLIED
+			sort CDATA #IMPLIED
+			visible (TRUE|FALSE) "TRUE"
+			uri %URI; #IMPLIED>
+	<!ELEMENT requirement (description,guideline?,assistance?,influences?,controls?)>
+		<!ATTLIST requirement
+			name CDATA #REQUIRED
+			title CDATA #IMPLIED
+			sort CDATA #IMPLIED
+			visible (TRUE|FALSE) "TRUE"
+			atom (TRUE|FALSE) "FALSE"
+			uri %URI; #IMPLIED>
+		<!ELEMENT description (#PCDATA)>
+			<!ATTLIST description
+				visible (TRUE|FALSE) "TRUE">
+		<!ELEMENT guideline (#PCDATA)>
+			<!ATTLIST guideline
+				visible (TRUE|FALSE) "TRUE"
+				uri %URI; #IMPLIED>
+		<!ELEMENT assistance (#PCDATA)>
+			<!ATTLIST assistance
+				visible (TRUE|FALSE) "TRUE"
+				uri %URI; #IMPLIED>
+		<!ELEMENT influences (incompatible|duplicates|replaces|requires|recommends)*>
+			<!ELEMENT incompatible (#PCDATA)>
+				<!ATTLIST incompatible
+					name CDATA #REQUIRED
+					visible (TRUE|FALSE) "TRUE"
+					uri %URI; #IMPLIED>
+			<!ELEMENT duplicates (#PCDATA)>
+				<!ATTLIST duplicates
+					name CDATA #REQUIRED
+					visible (TRUE|FALSE) "TRUE"
+					authorative (TRUE|FALSE) "TRUE"
+					uri %URI; #IMPLIED>
+			<!ELEMENT replaces (#PCDATA)>
+				<!ATTLIST replaces
+					name CDATA #REQUIRED
+					visible (TRUE|FALSE) "TRUE"
+					uri %URI; #IMPLIED>
+			<!ELEMENT requires (#PCDATA)>
+				<!ATTLIST requires
+					name CDATA #REQUIRED
+					visible (TRUE|FALSE) "TRUE"
+					uri %URI; #IMPLIED>
+			<!ELEMENT recommends (#PCDATA)>
+				<!ATTLIST recommends
+					name CDATA #REQUIRED
+					visible (TRUE|FALSE) "TRUE"
+					uri %URI; #IMPLIED>
+		<!ELEMENT controls (control)*>
+			<!ELEMENT control (#PCDATA)>
+				<!ATTLIST control
+					name CDATA #REQUIRED
+					title CDATA #IMPLIED
+					sort CDATA #IMPLIED
+					visible (TRUE|FALSE) "TRUE"
+					uri %URI; #IMPLIED>
+	<!ELEMENT preface ((chapter|article|section|ANY)*, (glossary|bibliography)?)>
+		<!ATTLIST preface
+			name CDATA #REQUIRED
+			title CDATA #IMPLIED
+			visible (TRUE|FALSE) "TRUE"
+			uri %URI; #IMPLIED>
+	<!ELEMENT glossary (#PCDATA)>
+		<!ATTLIST glossary
+			name CDATA #REQUIRED
+			title CDATA #IMPLIED
+			visible (TRUE|FALSE) "TRUE"
+			uri %URI; #IMPLIED>
+	<!ELEMENT bibliograpy (#PCDATA)>
+		<!ATTLIST bibliography
+			name CDATA #REQUIRED
+			title CDATA #IMPLIED
+			visible (TRUE|FALSE) "TRUE"
+			uri %URI; #IMPLIED>

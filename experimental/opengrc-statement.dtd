@@ -1,0 +1,94 @@
+<!ENTITY % URI "CDATA">
+    <!-- a Uniform Resource Identifier -->
+
+<!ENTITY % Datetime "CDATA">
+	<!-- date and time information. ISO date format -->
+
+<!ENTITY % LanguageCode "CDATA">
+    <!-- a language code, as per [RFC1766] -->
+	
+<!ELEMENT statement (summary,assertion+)>
+	<!ATTLIST statement
+		name CDATA #IMPLIED
+		title CDATA #IMPLIED
+		uri %URI; #IMPLIED
+		version CDATA #FIXED "0.1"
+		xml:lang %LanguageCode; #IMPLIED>	
+	<!ELEMENT summary (#PCDATA)>
+		<!ATTLIST summary
+			public (TRUE|FALSE) "FALSE">
+	<!ELEMENT assertion (declaration,assertion-properties,current-influences?,current-controls?,justification?,substantiations?)>
+		<!ATTLIST assertion
+			requirement-title CDATA #REQUIRED
+			requirement-uri %URI; #IMPLIED>
+		<!ELEMENT declaration (#PCDATA)>
+			<!ATTLIST declaration
+				public (TRUE|FALSE) "FALSE">
+		<!ELEMENT assertion-properties (dates,designations?,current-reason*,current-stage?,current-level?)>
+			<!ELEMENT dates (EMPTY)>
+				<!ATTLIST dates	
+					assertion-created %Datetime; #REQUIRED
+					requirement-retired %Datetime; #IMPLIED
+					requirement-created %Datetime; #IMPLIED
+					requirement-deadline %Datetime; #IMPLIED
+					requirement-conformed %Datetime; #IMPLIED
+					requirement-expiration %Datetime; #IMPLIED>
+			<!ELEMENT designations (accountable*,responsible*,consulted*,informed*)>
+				<!ELEMENT accountable (EMPTY)>
+					<!ATTLIST accountable
+						name CDATA #REQUIRED
+						href %URI; #IMPLIED
+						public (TRUE|FALSE) "FALSE">
+				<!ELEMENT responsible (EMPTY)>
+					<!ATTLIST responsible
+						name CDATA #REQUIRED
+						href %URI; #IMPLIED
+						public (TRUE|FALSE) "FALSE">
+				<!ELEMENT consulted (EMPTY)>
+					<!ATTLIST consulted
+						name CDATA #REQUIRED
+						href %URI; #IMPLIED
+						public (TRUE|FALSE) "FALSE">
+				<!ELEMENT informed (EMPTY)>
+					<!ATTLIST informed
+						name CDATA #REQUIRED
+						href %URI; #IMPLIED
+						public (TRUE|FALSE) "FALSE">
+			<!ELEMENT current-reason (EMPTY)>
+				<!ATTLIST current-reason
+					title CDATA #REQUIRED
+					type (assessment|situation|contract|regulation) #REQUIRED
+					uri %URI; #IMPLIED>
+			<!ELEMENT current-stage (EMPTY)>
+				<!ATTLIST current-stage
+					title CDATA #REQUIRED
+					type (unknown|deviant|pending|conform|retired) #REQUIRED
+					public (TRUE|FALSE) "FALSE"
+					uri %URI; #IMPLIED>
+			<!ELEMENT current-level (EMPTY)>
+				<!ATTLIST level
+					title CDATA #REQUIRED
+					type (negligent|initial|repeatable|defined|capable|efficient) #REQUIRED
+					uri %URI; #IMPLIED>
+		<!ELEMENT current-influences (duplicates*,replaces*,requires*)>
+			<!ELEMENT duplicates (EMPTY)>
+				<!ATTLIST duplicates
+					name CDATA #IMPLIED
+					authorative (TRUE|FALSE) "TRUE"
+					uri %URI; #REQUIRED>
+			<!ELEMENT replaces (EMPTY)>
+				<!ATTLIST replaces
+					name CDATA #IMPLIED
+					authorative (TRUE|FALSE) "TRUE"
+					uri %URI; #REQUIRED>
+			<!ELEMENT requires (EMPTY)>
+				<!ATTLIST requires
+					name CDATA #IMPLIED
+					uri %URI; #REQUIRED>
+		<!ELEMENT current-controls (current-control)*>
+			<!ELEMENT current-control (ANY)>
+		<!ELEMENT justification (#PCDATA)>
+		<!ELEMENT substantiations (claim*,evidence*,evaluation*)>
+			<!ELEMENT claim (#PCDATA)>
+			<!ELEMENT evidence (#PCDATA)>
+			<!ELEMENT evaluation (ANY)>
