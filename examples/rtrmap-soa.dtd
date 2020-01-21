@@ -1,4 +1,4 @@
-<!ELEMENT soa (lang,name,chapters+)>
+<!ELEMENT soa (lang,name,chapters)>
 <!ELEMENT lang (#PCDATA)>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT chapters (level1+)>
