@@ -1,23 +1,23 @@
-<!ELEMENT SoA (Lang,Name,Chapters+)>
-<!ELEMENT Lang (#PCDATA)>
-<!ELEMENT Name (#PCDATA)>
-<!ELEMENT Chapters (Level1+)>
+<!ELEMENT soa (lang,name,chapters+)>
+<!ELEMENT lang (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT chapters (level1+)>
 
-<!ELEMENT Level1 (Level2+)>
-	<!ATTLIST Level1
+<!ELEMENT level1 (level2+)>
+	<!ATTLIST level1
 		name CDATA #REQUIRED
 		description CDATA #REQUIRED>
 
-<!ELEMENT Level2 (Level3+)>
-	<!ATTLIST Level2
+<!ELEMENT level2 (level3+)>
+	<!ATTLIST level2
 		name CDATA #REQUIRED
 		description CDATA #REQUIRED>
 
-<!ELEMENT Level3 (Goal,Howto,Info)>
-	<!ATTLIST Level3
+<!ELEMENT level3 (goal,howto,info)>
+	<!ATTLIST level3
 		name CDATA #REQUIRED
 		description CDATA #IMPLIED>
 
-<!ELEMENT Goal (#PCDATA)>
-<!ELEMENT Howto (#PCDATA)>
-<!ELEMENT Info (#PCDATA)>
+<!ELEMENT goal (#PCDATA)>
+<!ELEMENT howto (#PCDATA)>
+<!ELEMENT info (#PCDATA)>
