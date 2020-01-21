@@ -1,6 +1,6 @@
 <!ELEMENT SoA (Lang,Name,Chapters+)>
-<!ELEMENT Lang (CDATA)>
-<!ELEMENT Name (CDATA)>
+<!ELEMENT Lang (#PCDATA)>
+<!ELEMENT Name (#PCDATA)>
 <!ELEMENT Chapters (Level1+)>
 
 <!ELEMENT Level1 (Level2+)>
