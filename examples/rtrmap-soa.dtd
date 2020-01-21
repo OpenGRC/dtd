@@ -13,7 +13,7 @@
 		name CDATA #REQUIRED
 		description CDATA #REQUIRED>
 
-<!ELEMENT level3 (goal,howto,info)>
+<!ELEMENT level3 (goal?,howto?,info?)>
 	<!ATTLIST level3
 		name CDATA #REQUIRED
 		description CDATA #IMPLIED>
