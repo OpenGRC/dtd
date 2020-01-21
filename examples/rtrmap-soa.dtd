@@ -1,9 +1,5 @@
 <!ELEMENT SoA (Lang,Name,Chapters+)>
-
 <!ELEMENT Chapters (Level1+)>
-	<!ATTLIST Chapters
-		name CDATA #REQUIRED
-		description CDATA #REQUIRED>
 
 <!ELEMENT Level1 (Level2+)>
 	<!ATTLIST Level1
