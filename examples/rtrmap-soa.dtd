@@ -1,4 +1,6 @@
 <!ELEMENT SoA (Lang,Name,Chapters+)>
+<!ELEMENT Lang (CDATA)>
+<!ELEMENT Name (CDATA)>
 <!ELEMENT Chapters (Level1+)>
 
 <!ELEMENT Level1 (Level2+)>
